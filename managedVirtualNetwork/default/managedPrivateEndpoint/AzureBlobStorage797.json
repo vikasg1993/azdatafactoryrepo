@@ -1,0 +1,7 @@
+{
+	"name": "AzureBlobStorage797",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/60d450cc-ce03-49b7-8c16-2dfd1077f245/resourceGroups/matillion-sf-resource-gp/providers/Microsoft.Storage/storageAccounts/azmatillionsaeastus2",
+		"groupId": "blob"
+	}
+}
