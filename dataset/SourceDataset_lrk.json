@@ -10,6 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "shiptonewbilldelta.txt",
+				"folderPath": "dev-dl",
 				"container": "varicent-raw-data"
 			},
 			"columnDelimiter": "|",
