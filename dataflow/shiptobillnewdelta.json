@@ -1,0 +1,36 @@
+{
+	"name": "shiptobillnewdelta",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "SourceDataset_lrk",
+						"type": "DatasetReference"
+					},
+					"name": "shiptonewbilldelta"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          BillTo as string,",
+				"          PayeeID as string,",
+				"          Date as date 'yyyy/MM/dd',",
+				"          Component as string,",
+				"          Metric as string,",
+				"          AdjustmentAmount as float '##0.##',",
+				"          AdjustmentType as string,",
+				"          AdjustmentReason as string,",
+				"          FYDetailIndicator as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     skipLines: 1) ~> shiptonewbilldelta"
+			]
+		}
+	}
+}
