@@ -1,0 +1,9 @@
+{
+	"name": "vikasgarhwal-df",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "5fca1ac1-a3df-40f4-82e2-2086dce4c1a0",
+		"tenantId": "cf8a6aac-0c6f-494a-a54d-b954ec983e5e"
+	}
+}

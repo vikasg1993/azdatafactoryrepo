@@ -1,0 +1,60 @@
+{
+	"name": "SourceDataset_lrk",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "varicent-raw-data"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "BillTo",
+				"type": "String"
+			},
+			{
+				"name": "PayeeID",
+				"type": "String"
+			},
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "Component",
+				"type": "String"
+			},
+			{
+				"name": "Metric",
+				"type": "String"
+			},
+			{
+				"name": "AdjustmentAmount",
+				"type": "String"
+			},
+			{
+				"name": "AdjustmentType",
+				"type": "String"
+			},
+			{
+				"name": "AdjustmentReason",
+				"type": "String"
+			},
+			{
+				"name": "FYDetailIndicator",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

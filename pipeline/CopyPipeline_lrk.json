@@ -1,0 +1,183 @@
+{
+	"name": "CopyPipeline_lrk",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_lrk",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "varicent-raw-data//"
+					},
+					{
+						"name": "Destination",
+						"value": "shiptobilldelta"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "AzureMySqlSink",
+						"writeBatchSize": 10000,
+						"writeBatchTimeout": "00:00:30"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "BillTo",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BillTo",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PayeeID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PayeeID",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Date",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Date",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Component",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Component",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Metric",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Metric",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "AdjustmentAmount",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AdjustmentAmount",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "AdjustmentType",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AdjustmentType",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "AdjustmentReason",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AdjustmentReason",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FYDetailIndicator",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FYDetailIndicator",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_lrk",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_lrk",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-07-12T13:53:43Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
